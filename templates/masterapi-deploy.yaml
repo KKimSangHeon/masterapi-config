@@ -1,0 +1,71 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: masterapi-sangheonkim-v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: masterapi-sangheonkim
+        version: v1
+    spec:
+      containers:
+        - name: devicemanagement
+          image: devcluster.icp:8500/iot/devicemanagement:IMAGE_TAG_PLACEHOLDER
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8280
+          envFrom:
+          - configMapRef:
+              name: device-management-api-config  
+    imagePullSecrets:
+    - name: regcred
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: masterapi-sangheonkim-v2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: masterapi-sangheonkim
+        version: v2
+    spec:
+      containers:
+        - name: devicemanagement
+          image: devcluster.icp:8500/iot/devicemanagement:IMAGE_TAG_PLACEHOLDER
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8280
+          envFrom:
+          - configMapRef:
+              name: device-management-api-config  
+    imagePullSecrets:
+    - name: regcred
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: masterapi-sangheonkim-v3
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: masterapi-sangheonkim
+        version: v3
+    spec:
+      containers:
+        - name: devicemanagement
+          image: devcluster.icp:8500/iot/devicemanagement:IMAGE_TAG_PLACEHOLDER
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8280
+          envFrom:
+          - configMapRef:
+              name: device-management-api-config  
+    imagePullSecrets:
+    - name: regcred
